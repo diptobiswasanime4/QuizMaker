@@ -24,6 +24,7 @@ function Dashboard() {
         {questions.map((q, index) => {
           return (
             <div
+              key={index}
               onClick={() => loadQuestion(q)}
               className="text-white px-2 hover:text-blue-200 cursor-pointer"
             >

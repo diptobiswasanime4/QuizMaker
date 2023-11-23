@@ -25,7 +25,7 @@ function Question({ params }) {
     }
 
     getData();
-  }, []);
+  }, [params.id]);
 
   async function loadNextQuestion() {
     const curIndex = questions.findIndex((q) => q.quizIndex === params.id);
