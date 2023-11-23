@@ -20,24 +20,24 @@ export const options = {
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
     }),
-    GoogleProvider({
-      profile(profile) {
-        console.log("Profile Google: ", profile);
+    // GoogleProvider({
+    //   profile(profile) {
+    //     console.log("Profile Google: ", profile);
 
-        let userRole = "User";
-        if (profile?.email == "diptobiswasanime4@gmail.com") {
-          userRole = "Admin";
-        }
+    //     let userRole = "User";
+    //     if (profile?.email == "diptobiswasanime4@gmail.com") {
+    //       userRole = "Admin";
+    //     }
 
-        return {
-          ...profile,
-          id: profile.sub,
-          role: userRole,
-        };
-      },
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
-    }),
+    //     return {
+    //       ...profile,
+    //       id: profile.sub,
+    //       role: userRole,
+    //     };
+    //   },
+    //   clientId: process.env.GOOGLE_ID,
+    //   clientSecret: process.env.GOOGLE_SECRET,
+    // }),
   ],
   callbacks: {
     async jwt({ token, user }) {
