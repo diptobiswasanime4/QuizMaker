@@ -77,15 +77,17 @@ export const options = {
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, profile }) {
       if (user) {
         token.role = user.role;
+        token.profile = profile;
       }
       return token;
     },
     async session({ session, token }) {
       if (session?.user) {
         session.user.role = token.role;
+        session.user.profile = token.profile;
         return session;
       }
     },

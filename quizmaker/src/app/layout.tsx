@@ -1,6 +1,7 @@
 import "./globals.css";
 import axios from "axios";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { getServerSession } from "next-auth";
 import { options } from "@/app/api/auth/[...nextauth]/options";
 import RegisterPopup from "@/components/RegisterPopup";
@@ -22,6 +23,7 @@ export default async function RootLayout({
           <div className="">
             <Navbar />
             {children}
+            <Footer />
           </div>
           <RegisterPopup />
         </body>

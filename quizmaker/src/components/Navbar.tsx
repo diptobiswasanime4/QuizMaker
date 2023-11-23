@@ -20,6 +20,9 @@ async function Navbar() {
         <Link href={`/create`} className="cursor-pointer hover:text-blue-200">
           Create
         </Link>
+        <Link href={`/profile`} className="cursor-pointer hover:text-blue-200">
+          Profile
+        </Link>
       </div>
       {session ? (
         <Link
