@@ -64,7 +64,7 @@ function Question({ params }) {
   }
 
   async function checkAnswer() {
-    const correctIndices = quiz.rightAnswerIndices;
+    const correctIndices = quiz?.rightAnswerIndices;
     const incorrectIndices = selectedIndices.filter(
       (i) => !correctIndices.includes(i)
     );
