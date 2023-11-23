@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import { getServerSession } from "next-auth";
 import { options } from "@/app/api/auth/[...nextauth]/options";
 import RegisterPopup from "@/components/RegisterPopup";
+import AuthProvider from "@/components/AuthProvider";
 
 axios.defaults.baseURL = process.env.BASE_URL;
 
@@ -16,13 +17,15 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className="">
-        <div className="">
-          <Navbar />
-          {children}
-        </div>
-        <RegisterPopup />
-      </body>
+      <AuthProvider>
+        <body className="">
+          <div className="">
+            <Navbar />
+            {children}
+          </div>
+          <RegisterPopup />
+        </body>
+      </AuthProvider>
     </html>
   );
 }
