@@ -1,45 +1,41 @@
-"use client";
-import React from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { getServerSession } from "next-auth";
+import { options } from "@/app/api/auth/[...nextauth]/options";
 
-function Navbar() {
-  const router = useRouter();
+async function Navbar() {
+  const session = await getServerSession(options);
+
   return (
     <div className="bg-black text-white py-2 flex justify-between text-lg">
       <div className="flex gap-4 pl-4">
-        <button
-          onClick={() => router.push(`/`)}
-          className="cursor-pointer hover:text-blue-200"
-        >
+        <Link href={`/`} className="cursor-pointer hover:text-blue-200">
           Home
-        </button>
-        <button
-          onClick={() => router.push(`/dashboard`)}
+        </Link>
+        <Link
+          href={`/dashboard`}
           className="cursor-pointer hover:text-blue-200"
         >
           Dashboard
-        </button>
-        <button
-          onClick={() => router.push(`/create`)}
-          className="cursor-pointer hover:text-blue-200"
-        >
+        </Link>
+        <Link href={`/create`} className="cursor-pointer hover:text-blue-200">
           Create
-        </button>
+        </Link>
       </div>
-      <div className="flex gap-4 pr-4">
-        <div
-          onClick={() => router.push(`/login`)}
-          className="cursor-pointer hover:text-blue-200"
+      {session ? (
+        <Link
+          href={"/api/auth/signout?callbackUrl=/"}
+          className="cursor-pointer hover:text-blue-200 text-xl pr-4"
         >
-          Login
-        </div>
-        <div
-          onClick={() => router.push(`/register`)}
-          className="cursor-pointer hover:text-blue-200"
+          Signout
+        </Link>
+      ) : (
+        <Link
+          href={`/api/auth/signin`}
+          className="cursor-pointer hover:text-blue-200 text-xl pr-4"
         >
-          Register
-        </div>
-      </div>
+          Signin
+        </Link>
+      )}
     </div>
   );
 }

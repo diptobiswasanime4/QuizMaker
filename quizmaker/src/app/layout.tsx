@@ -3,7 +3,7 @@ import "./globals.css";
 import axios from "axios";
 import Navbar from "@/components/Navbar";
 
-axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = process.env.BASE_URL;
 
 export const metadata: Metadata = {
   title: "Create Next App",
