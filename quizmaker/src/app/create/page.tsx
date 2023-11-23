@@ -217,7 +217,7 @@ function Create() {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-6 h-6 text-red-600"
+                      className="w-6 h-6 text-red-700"
                       onClick={(e) => deleteOption(e, index)}
                     >
                       <path
