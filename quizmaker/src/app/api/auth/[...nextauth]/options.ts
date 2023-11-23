@@ -1,5 +1,6 @@
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
+import CredentialsProvider from "next-auth/providers/credentials";
 
 export const options = {
   providers: [
@@ -37,6 +38,42 @@ export const options = {
       },
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
+    }),
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        username: {
+          label: "Username: ",
+          type: "text",
+          placeholder: "Your username",
+        },
+        password: {
+          label: "Password: ",
+          type: "password",
+          placeholder: "Your password",
+        },
+      },
+      async authorize(credentials) {
+        try {
+          const user = {
+            name: "Arya Dev",
+            username: "diptobiswasanime4",
+            password: "abcd1234",
+          };
+
+          if (
+            credentials.username == user.username &&
+            credentials.password == user.password
+          ) {
+            return user;
+          } else {
+            return null;
+          }
+        } catch (error) {
+          console.log(error);
+        }
+        return null;
+      },
     }),
   ],
   callbacks: {
