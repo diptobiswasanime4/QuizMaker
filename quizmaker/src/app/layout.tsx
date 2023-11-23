@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import axios from "axios";
+import Navbar from "@/components/Navbar";
 
 axios.defaults.baseURL = "http://localhost:3000";
 
@@ -16,7 +17,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="">{children}</body>
+      <body className="">
+        <div className="">
+          <Navbar />
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
